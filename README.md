@@ -1,1 +1,2 @@
 # AutoStack
+PIP Extension
