@@ -1,3 +1,3 @@
 # AutoStack
 PIP Extension
-Searches StackOverflow.
+Searches StackOverflow. Reports back answer if any.
