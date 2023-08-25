@@ -1,4 +1,4 @@
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(self, ok) -> String:
         return 2
 print("Hi")

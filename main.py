@@ -1,7 +1,8 @@
 import traceback
 import sys
-from stackapi import StackAPI
 import re
+import requests
+import html2text
 
 def check_e():
     try:
@@ -12,7 +13,7 @@ def check_e():
         error_message = str(exc_value)
         traceback_details = traceback.format_tb(exc_traceback)
 
-        #print("Traceback Details:")
+        print("Traceback Details:")
         for tb in traceback_details:
             print(tb)
         print("Error type:", error_type)
@@ -33,29 +34,58 @@ def check_e():
 
 
 def searchStack(query):
-    if query is None:
-        return None
-    SITE = StackAPI('stackoverflow')
+    search_api_url = "https://api.stackexchange.com/2.2/search/advanced"
+    query = "python " + query
+    print("")
+    search_params = {
+        "site": "stackoverflow",
+        "q": query,
+        "sort": "relevance",
+        "order": "desc",
+    }
 
-    search_results = SITE.fetch('search/advanced', q=query)
-    x = 0
-    if x == 1:
-        sys.exit(0)
-    for item in search_results['items']:
-        if 'accepted_answer_id' in item:
-            answer_id = item['accepted_answer_id']
-        elif 'answer_id' in item:
-            answer_id = item['answer_id']
-        else:
-            print("")
-            print("There is no answers for this problem on StackOverflow. Try debugging it yourself or asking .")
-            sys.exit(0)
+    try:
+        search_response = requests.get(search_api_url, params=search_params)
+        search_response.raise_for_status()
+        search_data = search_response.json()
 
-        answer = SITE.fetch('answers/{ids}', ids=[answer_id], filter='!9Z(-wzftf')['items'][0]
+        if "items" in search_data and len(search_data["items"]) > 0:
+            most_relevant_answer_id = search_data["items"][0]["question_id"]
 
-        answer_body = answer['body_markdown']
-        print(answer_body)
-        x += 1
+            answer_api_url = f"https://api.stackexchange.com/2.2/questions/{most_relevant_answer_id}/answers"
+
+            answer_params = {
+                "site": "stackoverflow",
+                "sort": "votes",
+                "order": "desc",
+                "filter": "withbody",
+            }
+
+            answer_response = requests.get(answer_api_url, params=answer_params)
+            answer_response.raise_for_status()
+            answer_data = answer_response.json()
+
+            if "items" in answer_data and len(answer_data["items"]) > 0:
+                answer_body = answer_data["items"][0]["body"]
+                text_maker = html2text.HTML2Text()
+                text_maker.ignore_links = True
+                sanitized_answer = text_maker.handle(answer_body)
+                sanitized_answer = '\n'.join(line for line in sanitized_answer.splitlines() if line.strip())
+
+                question_id = answer_data["items"][0]["question_id"]
+
+                question_link = f"https://stackoverflow.com/questions/{question_id}"
+
+                answer_with_link = f"For more info, click this line: {question_link}"
+                print("Most relevant answer:")
+                print(sanitized_answer)
+                print("")
+                return answer_with_link
+
+        return "No answers found for this error, try debugging yourself."
+
+    except requests.exceptions.RequestException as e:
+        return "Error making API request:", str(e)
 
 if __name__ == '__main__':
     #print(check_e())
