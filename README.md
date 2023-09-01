@@ -14,11 +14,11 @@ Windows:
 ```
 python -m pip install stackwizard
 ```
-With Conda
+With Conda:
 ```
 conda install -c conda-forge stackwizard
 ```
-For more information go to this link: https://pypi.org/project/stackwizard/
+For more information go to [this link](https://pypi.org/project/stackwizard/).
 ## Uses
 Explanation plus code example
 Picture of working issue?
