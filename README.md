@@ -7,17 +7,17 @@ StackWizard is a Python pip package which automatically searches Stack Overflow 
 Assuming you have the proper versions of everything installed:
 With pip:
 Mac: 
-'''
+```
 pip install stackwizard
-'''
+```
 Windows: 
-'''
+```
 python -m pip install stackwizard
-'''
+```
 With Conda
-'''
+```
 conda install -c conda-forge stackwizard
-'''
+```
 For more information go to this link: https://pypi.org/project/stackwizard/
 ## Uses
 Explanation plus code example
