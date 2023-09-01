@@ -18,7 +18,7 @@ With Conda:
 ```
 conda install -c conda-forge stackwizard
 ```
-For more information go to [this link](https://pypi.org/project/stackwizard/).
+For more information go to <a href="https://pypi.org/project/stackwizard/" target="_blank">this link</a>.
 ## Uses
 Explanation plus code example
 Picture of working issue?
