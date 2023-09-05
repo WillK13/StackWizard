@@ -6,6 +6,7 @@
 StackWizard is a Python pip package which automatically searches Stack Overflow when a user has an error. The algorithm analyzes your code in proper context and finds the most relevant question and answer to your error. The answer and a link are then included in the error message. The package is optimized to not add much time to computation while still providing accurate assistance.
 ## Install
 Assuming you have the proper versions of everything installed:
+
 With pip:
 Mac: 
 ```
