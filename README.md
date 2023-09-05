@@ -8,6 +8,7 @@ StackWizard is a Python pip package which automatically searches Stack Overflow 
 Assuming you have the proper versions of everything installed:
 
 With pip:
+
 Mac: 
 ```
 pip install stackwizard
