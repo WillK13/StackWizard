@@ -24,3 +24,16 @@ conda install -c conda-forge stackwizard
 ```
 For more information go to <a href="https://pypi.org/project/stackwizard/" target="_blank">this link</a>.
 ## Uses
+Explanation plus code example
+Picture of working issue?
+
+Explanation plus code example. Needs to be called for now.
+Picture of working issue? Or of results. Not too long. Have to see how to fix it first though.
+Etc etc
+code block
+
+etc etc
+code block
+
+etc
+example image
