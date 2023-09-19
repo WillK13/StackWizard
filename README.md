@@ -1,4 +1,5 @@
-![Logo](https://github.com/WillK13/StackWizard/assets/30449185/e612254d-4a6c-4d56-bb6f-fe51786ddb5d)
+![Untitled-1](https://github.com/WillK13/StackWizard/assets/30449185/45d4e782-09e4-46f6-9d04-df14f7938a74)
+
 # StackWizard
 [![PyPI version](https://badge.fury.io/py/pypi.svg)](https://badge.fury.io/py/pypi) [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
